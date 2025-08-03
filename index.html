@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<title>Recreating Movement</title>
+	<meta content="Recreating Movement: Experimental tool for analyzing film sequences in 3D." name="description"/>
+<!-- Additional meta information for SEO and authorship -->
+<meta content="index, follow" name="robots"/>
+<meta content="Martin Hilpoltsteiner" name="author"/>
+<meta content="Recreating Movement, film analysis, 3D, motion analysis, colour analysis, film frames" name="keywords"/>
+<meta content="Recreating Movement" property="og:title"/>
+<meta content="Experimental tool for analyzing film sequences in 3D." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="img/rm_tool.jpg" property="og:image"/>
+<meta content="https://yourdomain.com/" property="og:url"/>
+<!-- Canonical URL to avoid duplicate content issues -->
+<link href="https://yourdomain.com/" rel="canonical"/>
+<!-- Favicon: ensure correct path relative to project structure -->
+<link href="img/Favicon_rm.png" rel="icon" type="image/png"/>
+<!-- Bootstrap CSS (removed integrity for local file schemes) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!-- Bootstrap CSS (v5) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Lightbox2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Google Font: Open Sans -->
+<!-- <link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/> -->
+<link href="style.css" rel="stylesheet"/>
+
+
+</head>
+<body>
+<!-- Accessibility skip link -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container">
+<!-- Use the semantic <main> element for the primary page content -->
+	<main class="main-container" id="main-content" role="main">
+		<div id="intro"></div>
+<!-- Sticky Header with anchor navigation -->
+<header class="sticky-header mb-4">
+	<div class="d-flex justify-content-between align-items-center">
+		<h1 class="title mb-0">RECREATING MOVEMENT</h1>
+		<div class="nav-inline">
+			<nav aria-label="Main navigation">
+				<ul class="nav">
+					<li class="nav-item"><a class="nav-link" data-nav="intro" href="#intro">Introduction</a></li>
+					<li class="nav-item"><a class="nav-link" data-nav="basic-functions" href="#basic-functions">Basic Functions</a></li>
+					<li class="nav-item"><a class="nav-link" data-nav="ext-features" href="#ext-features">Extended Features</a></li>
+					<li class="nav-item"><a class="nav-link" data-nav="examples" href="#examples">Examples of Use</a></li>
+					<li class="nav-item"><a class="nav-link" data-nav="about" href="#about">About</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="nav-toggle">
+			<button aria-controls="offcanvasMenu" aria-label="Open navigation menu" class="btn btn-outline-secondary px-2 py-1" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas" type="button">
+				<span style="font-size:1.7rem;line-height:1;">☰</span>
+			</button>
+		</div>
+	</div>
+</header>
+<!-- Offcanvas menu for mobile -->
+<div aria-labelledby="offcanvasMenuLabel" class="offcanvas offcanvas-end" id="offcanvasMenu" tabindex="-1">
+	<div class="offcanvas-header">
+		<h5 id="offcanvasMenuLabel">Menu</h5>
+		<button aria-label="Close navigation menu" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+	</div>
+	<div class="offcanvas-body">
+		<ul class="nav flex-column">
+			<li class="nav-item"><a class="nav-link" data-nav="intro" href="#intro">Introduction</a></li>
+			<li class="nav-item"><a class="nav-link" data-nav="basic-functions" href="#basic-functions">Basic Functions</a></li>
+			<li class="nav-item"><a class="nav-link" data-nav="ext-features" href="#ext-features">Extended Features</a></li>
+			<li class="nav-item"><a class="nav-link" data-nav="examples" href="#04examples">Examples of Use</a></li>
+			<li class="nav-item"><a class="nav-link" data-nav="about" href="#about">About</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- CONTENT: Introduction ////////////////////////////////////////////////////////////////////-->
+<!-- <div class="section-divider" id="intro" style="height:0; margin: 0 0 2rem 0;"></div> -->
+<section class="content-100">
+	<h3>Introduction</h3>
+	<h2 class="image-headline">Tools for analyzing film sequences</h2>
+
+
+	<div class="content-80">
+		<img alt="Screenshot of the Recreating Movement tool in use" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-tool-feature-transparency.jpg"/>
+	</div>
+	<div class="content-80">
+		<p>Recreating Movement is an experimental software tool for film sequence analysis. Originally developed in 2005 as a diploma thesis, the application breaks down video into individual frames and arranges them sequentially within a 3D space. The result is a compelling, tube-like structure that freezes a span of cinematic time.</p>
+	</div>
+
+	<div class="content-80">
+		<img alt="Screenshot of the Recreating Movement tool interface in use" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-tool-interface.jpg"/>
+	</div>
+
+	<div class="content-80">
+		<p class="mb-3">The user can freely navigate through this sequence, exploring it from any angle within the 3D environment. An intuitive interface provides customizable settings and filters, creating a fascinating visual experience.</p>
+		The project serves as a design-driven exploration–offering new ways to experience film–and should be seen as a developing concept, not a finished product.</p>
+	</div>
+
+<!-- <div class="section-divider-2"></div> -->
+
+<!-- Vimeo video section -->
+<div class="content-80">
+<!-- 	<div class="ratio ratio-16x9">
+		<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" src="https://player.vimeo.com/video/121339016?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Recreating Movement demo video"></iframe>
+	</div> -->
+<div class="ratio ratio-16x9">
+  <div class="vimeo-embed"
+       data-src="https://player.vimeo.com/video/121339016?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+       data-width="100%"
+       data-height="100%"
+       title="Recreating Movement demo video">
+  </div>
+</div>
+</div>
+<div class="section-divider-2"></div>
+<h2 class="image-headline">Single Frames in Film Sequences</h2>
+<div class="content-80">
+	<img alt="Example of single film frames arranged next to each other" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-single-frames-example.jpg"/>
+</div>
+<div class="content-80">
+	<p>In traditional cinema, the illusion of motion stems from projecting still frames in rapid succession–typically 24 frames per second. The human eye cannot perceive each frame individually at this speed; instead, the brain merges them into a seamless flow, making the images appear to move naturally.</p>
+</div>
+<div class="section-divider-2"></div>
+<h2>Arranging Frames in 3D Space</h2>
+<div class="content-80">
+	<p>Each frame is extracted and placed sequentially within a 3D space, creating a spatial timeline. This arrangement turns the flow of time into a tangible visual structure–almost like sculpting motion itself.</p>
+</div>
+<div class="content-100">
+	<img alt="A 3D spatial arrangement of frames shown in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-3d-frame-arrangement.jpg"/>
+</div>
+</section>
+
+
+
+
+
+<!-- CONTENT: Basic Functions ////////////////////////////////////////////////////////////////////-->
+<div class="section-divider" id="basic-functions"></div>
+<section class="content-100">
+	<h3>Basic Functions</h3>
+	<h2>Navigation and Frame Distances</h2>
+	<div class="content-80">
+		<p>Keyboard controls allow users to navigate the 3D space from any angle, freely adjusting their viewpoint within the sequence. To focus more closely on particular frames, the distances between them can be increased or decreased as needed.</p>
+	</div>
+	<div class="content-100">
+		<img alt="Side view of the film frame complex visualized in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-frame-complex-sideview.jpg"/>
+	</div>
+
+
+	<div class="content-80">
+		<img alt="Different views of the film frame complex visualized in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-frame-complex-sideview-2.jpg"/>
+	</div>
+	<h2>Orientation in 3D Space</h2>
+	<div class="content-80">
+		<p>To assist orientation in the 3D space, a floor grid can be displayed as a visual guide. A timeline scale runs alongside the sequence, marking both frames and seconds. Users can also customise the background colour to optimise contrast and enhance the visibility of the film content.</p>
+	</div>
+
+	<h2>Play Modes</h2>
+	<div class="content-80">
+		<p>The film sequence can also be played in two distinct modes:<br>Play Mode 1: Frames move forward sequentially, with the front frame gradually fading out.<br>Play Mode 2: Frames start in reverse order. During playback, the front frame fades in and then shifts to the back as the next frame appears.</p>
+	</div>
+
+	<h2>Preview Mode</h2>
+	<div class="content-80">
+		<p>Preview mode allows direct interaction with individual frames in the 3D space. Hovering the cursor over a frame generates a duplicate alongside the sequence. This intuitive function makes browsing feel like flipping through the pages of a book.</p>
+	</div>
+
+<div class="section-divider-2"></div>
+	<h2>Frame-by-Frame Selection</h2>
+	<div class="content-80">
+		<p>Users can freely select frames from a sequence, with the option to fade in the unselected portions for clarity. This setup enables a layered view of time: what is, what was, and what is about to unfold.</p>
+	</div>
+	<div class="content-100">
+		<img alt="Selection within a film sequence with preview and frame scale in the Recreating Movement film analysis tool" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-sequence-selection-preview.jpg"/>
+	</div>
+<div class="section-divider-2"></div>
+	<h2>Adjusting Frame Transparency</h2>
+		<div class="content-80">
+		<p>Reducing frame transparency causes their box-like structures to blur into hazy, cloud-like forms. As outlines dissolve, internal colours and motion dynamics become more pronounced–revealing the film’s energy in a more organic, abstract way.</p>
+	</div>
+
+		<div class="content-100">
+		<img alt="Changing the transparency of the single frames gives an insight view into the sequential frame complex in Recreating Movement, showing internal film frame structure" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-transparency-2.jpg"/>
+	</div>
+
+
+<!-- Vimeo video section -->
+<!-- <div class="content-80">
+	<div class="ratio ratio-16x9">
+	<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" src="https://player.vimeo.com/video/121339021?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Recreating Movement demo video – basics"></iframe>
+</div>
+</div> -->
+
+
+<!-- Vimeo video section -->
+<div class="content-80">
+	<div class="ratio ratio-16x9">
+  <div class="vimeo-embed"
+       data-src="https://player.vimeo.com/video/121339021?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+       data-width="100%"
+       data-height="100%"
+       title="Recreating Movement – Adjusting Frame Transparency">
+  </div>
+</div>
+</div>
+
+</section>
+
+
+
+
+
+<!-- CONTENT: Extented Functions ////////////////////////////////////////////////////////////////////-->
+<div class="section-divider" id="ext-features"></div> 
+<section class="content-100">
+	<h3>Extended Features</h3>
+	<h2 class="image-headline">Colour Ranges: Highlight, Midtone, Shadow</h2>
+	<div class="content-80">
+		<img alt="Color range analysis in Recreating Movement: highlights, midtones, and shadows visualized for a film frame" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-color-range-highlights-mids-shadows.jpg"/>
+	</div>
+	<div class="content-80">
+		<p>Each frame is analysed for its colour values, which are divided into three tonal ranges: highlights, midtones, and shadows. For each range, a version of the frame is generated showing only the relevant pixels–everything else is rendered transparent. This transformation dissolves the frame’s original rectangular shape, creating sculptural forms where contours, densities, and rhythms of the film become visually tangible.</p>
+	</div>
+	<div class="content-80">
+		<img alt="Visualization of shadow color range extracted from a film sequence in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-color-range-shadows_1.jpg"/>
+	</div>
+
+<!-- Vimeo video section -->
+<!-- <div class="content-80">
+	<div class="ratio ratio-16x9">
+		<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" src="https://player.vimeo.com/video/121339020?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Recreating Movement – colour ranges video"></iframe>
+	</div>
+</div> -->
+
+<!-- Vimeo video section -->
+<div class="content-80">
+		<div class="ratio ratio-16x9">
+  <div class="vimeo-embed"
+       data-src="https://player.vimeo.com/video/121339020?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+       data-width="100%"
+       data-height="100%"
+       title="Recreating Movement – colour ranges video">
+  </div>
+  </div>
+</div>
+
+
+<div class="section-divider-2"></div>
+<h2>Selective Colour Removal</h2>
+<div class="content-80">
+	<img alt="Deleting selected color ranges from film frames in Recreating Movement to highlight image areas" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-delete-colors-film-analysis.jpg"/>
+</div>
+<div class="content-80">
+	<p>Specific tonal elements–such as pure white or deep black–can be selectively removed, while other colour data remains intact. This makes shifts in elements like camera movements or tracking shots directly comparable, revealing subtle aspects of the film’s visual structure.</p>
+</div>
+<div class="content-100">
+	<img alt="Visualization of color deletion applied to the frame complex in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-delete-colors-frame-complex-1.jpg"/>
+</div>
+
+<div class="content-80">
+	<img alt="Visualization of color deletion applied to the frame complex in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-delete-colors-frame-complex-2.jpg"/>
+</div>
+
+<!-- Vimeo video section -->
+<!-- <div class="content-80">
+	<div class="ratio ratio-16x9">
+		<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" src="https://player.vimeo.com/video/121339019?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Recreating Movement – remove colours video"></iframe>
+	</div>
+</div> -->
+
+<!-- Vimeo video section -->
+<div class="content-80">
+	<div class="ratio ratio-16x9">
+  <div class="vimeo-embed"
+       data-src="https://player.vimeo.com/video/121339019?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+       data-width="100%"
+       data-height="100%"
+       title="Recreating Movement – Selective Colour Removal">
+  </div>
+  </div>
+</div>
+
+
+<div class="section-divider-2"></div>
+<h2>Colour-Based Frame Arrangement</h2>
+<div class="content-80">
+	<p>As part of the colour analysis, each frame’s pixel count is calculated for highlights, midtones, and shadows. In arrangement mode, frames are repositioned along the horizontal axis based on these values–e.g., brighter frames shift further right when sorted by highlights. This visualisation provides a quick overview of how tonal patterns and dominant colour ranges develop across the film.</p>
+</div>
+<div class="content-80">
+	<img alt="Arrangement of film frames based on color ranges in Recreating Movement, showing sequence grouped by dominant colors" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-arrangement-by-color-range.jpg"/>
+</div>
+
+<div class="section-divider-2"></div>
+<h2>Visualising Film cuts</h2>
+<div class="content-80">
+	<p>Arrangement mode can also visualise structural elements like film cuts. In this example, cut points are manually marked and aligned relative to a reference line–either horizontally or at the top. This produces a clear, ordered view of the film’s editing structure, with the first frame of each cut lined up in sequence.</p>
+</div>
+<div class="content-100">
+	<img alt="Film cuts arranged in 3D space in Recreating Movement, visualizing shot structure across the sequence" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-film-cuts-3d-arrangement.jpg"/>
+</div>
+
+<div class="section-divider-2"></div>
+<h2>Audio Visualisation Techniques</h2>
+<div class="content-80">
+	<p class="mb-3">Audio volume can be measured frame by frame and mapped proportionally to each frame’s height, width, or both–creating a visualisation of volume levels across time.</p>
+	In a more experimental variation, audio frequency data is used to control frame rotation. When played, the sequence produces striking, sound-reactive visuals that shift dynamically with the audio.</p>
+</div>
+<div class="content-100">
+	<img alt="Audio distortion visualized: film frames sized according to audio values in Recreating Movement tool" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-audio-values-frame-size.jpg"/>
+</div>
+
+<div class="section-divider-2"></div>
+<h2>Frame Metadata with ID Tags</h2>
+<div class="content-80">
+	<p class="mb-3">Like MP3s with hidden metadata, each film frame contains digital ID tags–not about genre, but about measurable attributes like highlights, midtones, and audio volume. In Preview Mode, hovering over a frame reveals these values instantly.</p>
+	<p class="mb-3">Search Mode uses this data to locate visually or sonically similar frames, helping trace patterns across the film.</p>
+	<p>These tags can also be visualised in 3D space as floating horizontal bars, their widths reflecting the underlying values–turning abstract data into an intuitive visual landscape.</p>
+</div>
+<div class="content-80">
+	<img alt="ID tags and single frame metadata displayed in the Recreating Movement film analysis tool interface" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-id-tags-single-frame-metadata-1.jpg"/>
+</div>
+
+<div class="section-divider-2"></div>
+<h2>User-Generated Frame Tags</h2>
+<div class="content-80">
+	<p>User ID tags represent an experimental concept based on capturing real-time data from the viewer. This might include measurements like pulse or facial expressions recorded via sensors or a camera. These values could be stored as ID tags and used to infer viewer habits or emotional states–potentially influencing how the film unfolds. The example shown is based on simulated data.</p>
+</div>
+<div class="content-80">
+	<img alt="ID tags and single frame metadata displayed in the Recreating Movement film analysis tool interface" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-id-tags-single-frame-metadata-2.jpg"/>
+</div>
+
+<div class="section-divider-2"></div>
+<h2 class="image-headline">Eye-Tracking Gaze Mapping</h2>
+
+
+<div class="content-60">
+	<img alt="Eye tracking data visualized in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-eye-tracking-visualization-1.jpg"/>
+</div>
+<div class="content-80">
+	<p>An eye-tracking camera records the viewer’s gaze, overlaying the image with a grid to identify where attention is focused–for example, cell C5. This data is saved as an ID tag.<br>
+	In this experimental setup, the eye-tracking data is simulated. When visualised in 3D, only the segments that correspond to these gaze points are shown, offering an abstracted view of visual attention across the film.</p>
+</div>
+<div class="content-80">
+	<img alt="Eye tracking data visualized in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-eye-tracking-visualization-2.jpg"/>
+</div>
+</section>
+
+
+
+
+
+
+<!-- CONTENT: Examples of Use ////////////////////////////////////////////////////////////////////-->
+<div class="section-divider" id="examples"></div>
+<section class="content-100">
+	<h3>Examples of Use</h3>
+	<h2>Examples of Use</h2>
+	<div class="content-80">
+		<p class="mb-3">All previously shown examples are based on feature films–but it soon became clear that this tool’s potential goes far beyond the realm of entertainment. One particularly powerful feature is the selective extraction of frames, such as removing backgrounds, which opens new possibilities for visualising motion with more clarity and focus.</p>
+		<p>Even complex movements can be captured across their full duration and restructured into visual data. This makes motion patterns not only visible but also analyzable–revealing the hidden logic and dynamics of movement in a way that's both accessible and insightful.
+		</p>
+	</div>
+<div class="section-divider-2"></div>
+	<h2>Motion Study: Tennis Serve</h2>
+		<div class="content-80">
+		<p class="mb-3">This visualisation shows a tennis player’s serve and offers a valuable tool for sports science. Multiple sequences can be loaded and compared, making differences in speed, position, or rhythm easy to spot.</p>
+			<p> Movements are broken down frame by frame, allowing detailed analysis over time and space. ID tags can include biomechanical data–like joint angles or body alignment–turning visuals into measurable performance metrics.</p>
+	</div>
+	<div class="content-100">
+		<img alt="Motion analysis of a tennis serve visualized as sequential animation frames in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-motion-analysis-tennis-serve-1.jpg"/>
+	</div>
+
+
+	<div class="content-60">
+		<img alt="Motion analysis of a tennis serve visualized as sequential animation frames in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-motion-analysis-tennis-serve-2.jpg"/>
+	</div>
+
+
+<div class="section-divider-2"></div>
+	<h2>Moframes- Visualising Motion Complexity</h2>
+
+		<div class="content-80">
+		<p>This approach to visualising motion sequences evolved into a dedicated project called MoFrames. It breaks down and reassembles movement into forms that reveal hidden rhythms, directional shifts, and spatial interactions–offering new ways of seeing and understanding motion.</p>
+	</div>
+
+		<div class="content-100">
+		<img alt="MoFrames visualization of a golf swing by Martin Hilpoltsteiner: the motion is dissected and restructured into visual layers, uncovering rhythmic loops, directional flow, and the spatial complexity of the athlete’s movement." class="img-fluid custom-image" loading="lazy" src="img/moframes-motion-visualization-golf-swing.jpg"/>
+	</div>
+
+		<div class="content-100">
+		<img alt="MoFrames visualization of a cheerleading performance by Martin Hilpoltsteiner: layered motion patterns of arm and pom-pom movements form a heart, capturing rhythm, symmetry, and the expressive flow of coordinated choreography." class="img-fluid custom-image" loading="lazy" src="img/moframes-motion-visualization-cheerleading-pom-performance.jpg"/>
+	</div>
+
+
+
+	<div class="content-100">
+		<img alt="MoFrames visualization of soccer ball juggling by Martin Hilpoltsteiner: the motion sequence reveals the rhythmic interplay between athlete and ball, highlighting spatial loops, timing, and flow in a continuous ball control performance." class="img-fluid custom-image" loading="lazy" src="img/moframes-motion-visualization-soccer-juggling.jpg"/>
+	</div>
+<!-- 
+		<div class="content-60">
+		<img alt="MoFrames visualization of a baseball swing by Martin Hilpoltsteiner: complex motion is captured through layered sequencing, revealing hidden rhythms, directional changes, and spatial dynamics." class="img-fluid custom-image" loading="lazy" src="img/moframes-motion-visualization-baseball-swing.jpg"/>
+	</div> -->
+
+
+
+
+
+<!-- Vimeo video section -->
+<!-- <div class="content-80">
+	<div class="ratio ratio-16x9" style="margin-bottom: 1rem;">
+		<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" src="https://player.vimeo.com/video/121373728?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Recreating Movement – motion analysis video"></iframe>
+	</div>
+	<p><a href="https://vimeo.com/showcase/3290997" rel="noopener noreferrer" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Check out more MoFrames Videos on Vimeo </a></p>
+</div> -->
+
+
+<!-- Vimeo video section -->
+<div class="content-80">
+	<div class="ratio ratio-16x9" style="margin-bottom: 1rem;">
+  <div class="vimeo-embed"
+       data-src="https://player.vimeo.com/video/121373728?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+       data-width="100%"
+       data-height="100%"
+       title="Moframes – Visualising Motion Complexity">
+  </div>
+</div>
+  	<p><a href="https://vimeo.com/showcase/3290997" rel="noopener noreferrer" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Check out more MoFrames Videos on Vimeo </a></p>
+ </div>
+
+
+
+<div class="section-divider-2"></div>
+<h2 class="image-headline">Crash Test Visual Comparison</h2>
+<div class="content-80">
+	<img alt="Visualization and side-by-side comparison of automotive crash-test recordings in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-crash-test-comparison-1.jpg"/>
+</div>
+<div class="content-80">
+	<p>Comparing two parallel video recordings–such as crash tests–can be visually overwhelming. Action unfolds too quickly for the eye to process. By using this tool and filtering out background elements, the visual data is reduced to essentials, highlighting relevant motion and simplifying analysis.</p>
+</div>
+
+<div class="content-100">
+	<img alt="Visualization and side-by-side comparison of automotive crash-test recordings in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-crash-test-comparison-2.jpg"/>
+</div>
+<div class="content-80">
+	<p class="mb-3">Differences in deformation become instantly visible. Time and image are synchronised, making changes traceable frame by frame. Adjusting frame intervals or stepping through the sequence reveals deeper nuances.</p>
+	<p>Tailoring test conditions to the tool–such as using colour codes on vehicle parts or dummies–can enhance precision. ID tags can store sensor data, offering a detailed and quantitative view of the deformation process.</p>
+</div>
+<div class="content-80">
+	<img alt="Visualization and side-by-side comparison of automotive crash-test recordings in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-crash-test-comparison-3.jpg"/>
+</div>
+<div class="section-divider-2"></div>
+<h2>Crash Test Outline Mapping</h2>
+<div class="content-80">
+	<p>Another display mode shows only the vehicle outlines, each rendered in a distinct colour. Overlaid, these outlines highlight structural differences that become clearly visible during playback.</p>
+</div>
+<div class="content-80">
+	<img alt="Visualization and side-by-side comparison of automotive crash-test recordings in Recreating Movement" class="img-fluid custom-image" loading="lazy" src="img/recreating-movement-crash-test-comparison-4.jpg"/>
+</div>
+</section>
+
+
+
+
+<!-- CONTENT: About ////////////////////////////////////////////////////////////////////-->
+<div class="section-divider" id="about"></div>
+<section class="content-100">
+	<h3>About</h3>
+	<h2>Recreating Movement- tools for analyzing film sequences</h2>
+
+	<div class="content-80">
+		<p class="mb-3">This project was presented as a diploma thesis by Martin Hilpoltsteiner in July 2005 at the University of Applied Sciences Würzburg, Germany (Department of Communication Arts).</p>
+		<p>Examiners: Prof. Erich Schoels, Prof. Kerstin Stutterheim.<br/>Idea, Concept, Design, Coding: Martin Hilpoltsteiner</p>
+	</div>
+	<h2>Used Footage</h2>
+	<div class="content-80">
+		<p><strong>Metropolis</strong> – Fritz Lang (Friedrich Wilhelm Murnau Stiftung)<br/><strong>Crashtest footage </strong>(EURO NCAP)<br/><strong>Sport footage </strong>(ribbit films)<br/><strong>Simons Ranch</strong> – Tina Eckhoff <br/><strong>Ich rette das Multiversum</strong> – Ulf Groote <br/><strong>FAQ – beige GT </strong>(Brock, Hudl)<br/><strong>Design for Dreaming </strong>(archive.org)</p>
+	</div>
+	<h2>Awards</h2>
+	<div class="content-80">
+		<p><strong>Designpreis Deutschland – </strong>Nominee<br/><strong>Lucky Strike Junior Design Award – </strong>Winner<br/><strong>Bayerischer Staatspreis für Nachwuchsdesigner – </strong>Winner<br/><strong>IF Award, Kommunikationsdesign – </strong>Winner<br/><strong>TTA Top Talent Award – </strong>Winner</p>
+	</div>
+
+	<h2>Exhibitions</h2>
+	<div class="content-80">
+		<p><strong>ZKM – Mind Frames </strong>(2006)<br/><strong>Technical Museum Vienna </strong>(2006)<br/><strong>New Museum für Art and Design Nuremberg </strong>(2006)<br/><strong>Entry 2006 Essen Zollverein</strong><br/><strong>IHK Munich </strong>(2006)<br/><strong>Designale der Heim und Handwerk Munich </strong>(2006)</p>
+	</div>
+
+		<h2>Contact</h2>
+	<div class="content-80">
+		<p><a href="http://martin-hip.de/" rel="noopener noreferrer" target="_blank"><i class="bi bi-box-arrow-up-right"></i> <strong>Martin Hilpoltsteiner</strong> | Selected Projects Portfolio</a><br><i class="bi bi-envelope"></i> info@moframes.net</p>
+	</div>
+</section>
+
+	<h2>Links</h2>
+	<div class="content-80">
+		<p><a href="http://www.flong.com/texts/lists/slit_scan/#mhp" rel="noopener noreferrer" target="_blank"><i class="bi bi-box-arrow-up-right"></i> An Informal Catalogue of Slit-Scan Video Artworks – Golan Levin</a><br/><a href="https://fg.fhws.de/" rel="noopener noreferrer" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Fachhochschule Würzburg, Fachbereich Gestaltung</a></p>
+	</div>
+
+
+
+
+
+<!-- FOOTER ////////////////////////////////////////////////////////////////////-->
+<footer class="mt-4 pt-4 pb-3 border-top">
+	<div class="container" style="max-width:940px;">
+		<div class="d-flex flex-wrap justify-content-between align-items-center small">
+			<div class="mb-2 mb-md-0 text-muted">
+				© 2025 Recreating Movement
+			</div>
+			<div>
+				<a class="text-muted me-3" href="impressum.html">Imprint</a>
+				<a class="text-muted me-3" href="datenschutz.html">Privacy Policy</a>
+			</div>
+		</div>
+	</div>
+</footer>
+</main>
+</div>
+
+<div id="cookie-banner" class="cookie-banner">
+  <div class="language-toggle">
+    <button id="lang-en" class="lang-btn">EN</button>
+    <button id="lang-de" class="lang-btn">DE</button>
+  </div>
+  <p id="cookie-text"></p>
+  <div class="cookie-buttons">
+    <button id="cookie-accept"></button>
+    <button id="cookie-decline"></button>
+  </div>
+</div>
+
+ <script src="main.js"></script>
+
+ <!-- Bootstrap Bundle JS (inkl. Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Lightbox2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox-plus-jquery.min.js"></script>
+
+</body>
+</html>
+
