@@ -1,94 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Nur die IDs der Abschnitte – Labels sind überflüssig
-  const sections = ["intro", "basic-functions", "ext-features", "examples", "about"];
-  // Alle Navigationslinks (Desktop & Mobil)
-  const navLinks = document.querySelectorAll('.nav-link[data-nav]');
 
-  // Hilfsfunktion: führt eine Funktion höchstens alle 'wait' ms aus
-  function throttle(fn, wait) {
-    let lastCall = 0;
-    return function (...args) {
-      const now = Date.now();
-      if (now - lastCall >= wait) {
-        lastCall = now;
-        fn.apply(this, args);
-      }
-    };
-  }
 
-  // Scroll‑Handler: Nav‑Highlighting und Header‑Schatten
-  function onScroll() {
-    const fromTop = window.scrollY + 80; // Offset wegen des Sticky‑Headers
-    let found = false;
-
-    // Abschnitte von unten nach oben prüfen
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = document.getElementById(sections[i]);
-      if (section && section.offsetTop <= fromTop) {
-        navLinks.forEach(link => link.classList.toggle(
-          'active',
-          link.getAttribute('href') === '#' + sections[i]
-        ));
-        found = true;
-        break;
-      }
-    }
-
-    // Wenn kein Abschnitt aktiv ist, den ersten Link markieren
-    if (!found && navLinks.length) {
-      navLinks.forEach((link, idx) => link.classList.toggle('active', idx === 0));
-    }
-
-    // Header‑Schatten abhängig von der Scroll‑Position
-    const header = document.querySelector('.sticky-header');
-    if (header) {
-      header.classList.toggle('header-shadow', window.scrollY > 2);
-    }
-  }
-
-  // Throttled Scroll‑Listener registrieren und initial ausführen
-  window.addEventListener('scroll', throttle(onScroll, 120));
-  onScroll();
-
-  // Smooth Scroll und Schließen des Offcanvas-Menüs bei Klick
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      const targetId = link.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({
-          top: target.offsetTop - 60,
-          behavior: 'smooth',
-        });
-        // Mobilmenü schließen, falls offen
-        if (window.innerWidth < 769) {
-          const offcanvas = document.querySelector('.offcanvas.show');
-          if (offcanvas) {
-            bootstrap.Offcanvas.getInstance(offcanvas).hide();
-          }
-        }
-      }
-    });
+/* const lightbox = GLightbox({
+    selector: '[data-glightbox]'
   });
-
-
-
-
-  
-
-  // Tastaturfokus nach Schließen des Offcanvas zurück zum Menü-Button
-  const offcanvasMenu = document.getElementById('offcanvasMenu');
-  const menuButton = document.querySelector('[data-bs-target="#offcanvasMenu"]');
-  if (offcanvasMenu && menuButton) {
-    offcanvasMenu.addEventListener('hidden.bs.offcanvas', () => {
-      menuButton.focus();
+*/
+   if (window.innerWidth >= 768) {
+    const lightbox = GLightbox({
+      selector: '[data-glightbox]'
     });
   }
-});
-
-
-
 
 
 
@@ -105,15 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = localStorage.getItem("cookie-lang") || "en";
     const userConsent = localStorage.getItem("cookie-consent");
 
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+
+
     const texts = {
       en: {
-        message: "We use cookies to enhance your experience and load services like Vimeo.",
+        message: "We use cookies and embed third-party services (e.g. Vimeo for video playback). These contents will only be loaded after you give your consent. For more information, please see our privacy policy.",
         accept: "Accept",
         decline: "Decline",
         blocked: "Vimeo video blocked due to cookie preferences."
       },
       de: {
-        message: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und Dienste wie Vimeo zu laden.",
+        message: "Wir verwenden Cookies und binden Dienste Dritter ein (z. B. Vimeo für Videowiedergabe). Erst nach Ihrer Zustimmung werden diese Inhalte geladen. Weitere Infos finden Sie in unserer Datenschutzerklärung.",
         accept: "Zustimmen",
         decline: "Ablehnen",
         blocked: "Vimeo-Video blockiert aufgrund Ihrer Cookie-Einstellungen."
@@ -189,4 +114,42 @@ document.addEventListener('DOMContentLoaded', () => {
       banner.style.display = "none";
       showPlaceholders();
     };
+
+// deaktiviert Glightbox bei kleinen Sceeens
+        if (window.innerWidth >= 576) {
+      // Aktivieren bei breiten Bildschirmen
+      GLightbox({ selector: '[data-glightbox]' });
+    } else {
+      // Deaktivieren bei kleinen Screens
+      document.querySelectorAll('[data-glightbox]').forEach(link => {
+        // Entferne das Attribut, damit GLightbox nicht initialisiert wird
+        link.removeAttribute('data-glightbox');
+
+        // Optional: Standardverhalten verhindern (z. B. kein Öffnen im neuen Tab)
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+
+        // Optional: href deaktivieren oder ersetzen
+        link.removeAttribute('href');
+        // oder z. B. ersetzen durch ein statisches Bild
+        // link.setAttribute('href', '#');
+      });
+    }
+
+// hamburger menü schliessen nach click
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function () {
+        if (window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none') {
+          bootstrap.Collapse.getInstance(navbarCollapse)?.hide();
+        }
+      });
+    });
+
+
+// Schatten Sticky Header einblenden
+
+
+
+
   });
