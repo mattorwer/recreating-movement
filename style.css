@@ -130,11 +130,13 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     /* (MIN, PREFERRED, MAX); */
-    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-size: clamp(1.55rem, 5.2vw, 3.2rem);
     margin-bottom: 0.5rem;
     font-weight: 400;
 
 }
+
+
 
 /*abstand logo to nav*/
 .justify-content-between {
@@ -179,13 +181,15 @@ section {
 /*Schatten unter Sticky Header */
 #mainNavbar.sticky-top::after {
     content: "";
-    position: absolute;
+     border-top: 2px solid #f3ece8;
+/*    position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     height: 4px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
-    pointer-events: none;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+    pointer-events: none;*/
 }
 
 
@@ -197,26 +201,6 @@ section {
     padding-top: 1.8rem;
 }
 
-
-@media (max-width: 768px) {
-    .main-wrapper {
-        margin-top: 0;
-    }
-
-    .container.hip-header {
-        /*PRIORITY!!!!!!!!!!!!!!*/
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-
-    }
-
-    body {
-
-        margin-left: 0;
-        margin-right: 0;
-
-    }
-}
 
 
 
@@ -232,6 +216,7 @@ section {
 
 
 .nav-link {
+    font-size:1rem;
     color: #939393;
     font-weight: 600;
     transition: color .2s;
@@ -258,13 +243,14 @@ section {
 
 /* //////////////////TYPE*/
 h3 {
-    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     font-weight: 700;
-    border-bottom: 1.5px solid #f3ece8;
+/*    border-bottom: 1.5px solid #f3ece8;
     border-top: 1.5px solid #f3ece8;
     padding-top: .2rem;
     padding-bottom: .2rem;
-    margin-bottom: .4rem;
+    margin-bottom: .4rem;*/
+    margin-bottom: .2rem;
     color: var(--accent-orange);
     text-transform: uppercase;
 
@@ -273,7 +259,7 @@ h3 {
 
 
 h2 {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-size: clamp(1.3rem, 2.8vw, 1.8rem);
     font-weight: 600;
     margin-bottom: 1.5rem;
     line-height: 1.2;
@@ -297,8 +283,8 @@ h2 {
 
 
 p {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    color: #333333;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    color: #626262;
     margin-bottom: 3rem;
     /*3rem= mb-5-48px*/
     line-height: 1.6;
@@ -327,6 +313,21 @@ a:focus-visible {
 
 
 
+/* //////////////////THUMBNAILS */
+
+.thumbnail-border {
+  border: 2px solid #ccc;            /* hellgrau */
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.thumbnail-border:hover {
+  border-color: #999;                /* dunkleres Grau bei Hover */
+}
+
+
+
+
 
 
 /* //////////////////CONTAINER */
@@ -348,6 +349,8 @@ img.img-fluid {
 .custom-image:hover {
     /*transform: scale(1.01);*/
 }
+
+
 
 
 
@@ -396,11 +399,46 @@ img.img-fluid {
 }
 
 
+/* //change to mobile menue */
+@media (max-width: 991.98px) {
+      /*change vert. distance to logo*/
+  #navbarContent {
+    margin-top: 1rem;
+  }
+
+  /*center h1 with menue*/
+h1.title {
+    margin-bottom: 0;
+}
+}
+
+
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        margin-top: 0;
+    }
+
+    .container.hip-header {
+        /*PRIORITY!!!!!!!!!!!!!!*/
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+    }
+
+    body {
+
+        margin-left: 0;
+        margin-right: 0;
+
+    }
+}
+
 /* //////////////////MOBILE MENUE TOGGLER */
 .navbar-toggler {
     /* hält Toggle immer ganz rechts */
     margin-left: auto;
-    border-radius: 0;
+    /*border-radius: 0;*/
     font-size: 0.8rem;
     /* Skalierung des Icon-Elements */
     border: 3px solid #888;
@@ -466,6 +504,7 @@ footer {
 .cookie-buttons button {
     padding: 0.2rem 1rem;
     border: none;
+     border-radius: 4px;
     cursor: pointer;
 }
 
