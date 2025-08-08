@@ -4,11 +4,11 @@
     selector: '[data-glightbox]'
   });
 */
-   if (window.innerWidth >= 768) {
+/*   if (window.innerWidth >= 768) {
     const lightbox = GLightbox({
       selector: '[data-glightbox]'
     });
-  }
+  }*/
 
 
 
@@ -115,8 +115,12 @@
       showPlaceholders();
     };
 
+        const lightbox = GLightbox({
+      selector: '[data-glightbox]'
+    });
+
 // deaktiviert Glightbox bei kleinen Sceeens
-        if (window.innerWidth >= 576) {
+ /*       if (window.innerWidth >= 576) {
       // Aktivieren bei breiten Bildschirmen
       GLightbox({ selector: '[data-glightbox]' });
     } else {
@@ -135,7 +139,7 @@
         // oder z. B. ersetzen durch ein statisches Bild
         // link.setAttribute('href', '#');
       });
-    }
+    }*/
 
 // hamburger menü schliessen nach click
     navLinks.forEach(function(link) {

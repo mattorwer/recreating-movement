@@ -1,5 +1,4 @@
 :root {
-
     --accent-orange: #e87625;
 }
 
@@ -117,25 +116,21 @@ body {
 .title {
 
     color: var(--accent-orange);
-    /*color: #e87625;*/
     padding-left: 0;
     /*letter-spacing: 1px;*/
     user-select: none;
-    /* <<< NEU: verhindert Auswählen/Kopieren */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     /* (MIN, PREFERRED, MAX); */
-    font-size: clamp(1.55rem, 5.2vw, 3.2rem);
+    font-size: clamp(1.8rem, 5.2vw, 3.2rem);
     margin-bottom: 0.5rem;
     font-weight: 400;
 
 }
-
 
 
 /*abstand logo to nav*/
@@ -143,7 +138,8 @@ body {
     margin-bottom: -0.5rem;
 }
 
-/*PRIORITY!!!!!!!!!!!!!!ANKER Abstand zu header
+
+/*PRIORITY!!!!!!!!!!!ANKER Abstand zu header
 check body tag data-bs-offset="150" */
 section {
     scroll-margin-top: 170px;
@@ -160,10 +156,8 @@ section {
     background-color: white;
     padding-left: 4rem;
     padding-right: 4rem;
-
     padding-right: clamp(0.8rem, 3vw, 2.5rem);
     padding-left: clamp(0.8rem, 3vw, 2.5rem);
-
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -172,7 +166,7 @@ section {
 .container.hip-header {
     /*PRIORITY!!!!!!!!!!!!!!*/
     margin-top: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 
 }
 
@@ -181,15 +175,15 @@ section {
 /*Schatten unter Sticky Header */
 #mainNavbar.sticky-top::after {
     content: "";
-     border-top: 2px solid #f3ece8;
-/*    position: absolute;
-    left: 0;
-    right: 0;
+    border-top: 1.5px solid #eaeaea;
+    position: absolute;
+    left: 0.8rem;
+    right: 0.8rem;
     bottom: 0;
-    height: 4px;
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
-    pointer-events: none;*/
+    height: 0;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    box-sizing: unset;
 }
 
 
@@ -216,7 +210,7 @@ section {
 
 
 .nav-link {
-    font-size:1rem;
+    font-size: 1rem;
     color: #939393;
     font-weight: 600;
     transition: color .2s;
@@ -245,7 +239,7 @@ section {
 h3 {
     font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     font-weight: 700;
-/*    border-bottom: 1.5px solid #f3ece8;
+    /*    border-bottom: 1.5px solid #f3ece8;
     border-top: 1.5px solid #f3ece8;
     padding-top: .2rem;
     padding-bottom: .2rem;
@@ -260,7 +254,7 @@ h3 {
 
 h2 {
     font-size: clamp(1.3rem, 2.8vw, 1.8rem);
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     color: #333333;
@@ -316,13 +310,15 @@ a:focus-visible {
 /* //////////////////THUMBNAILS */
 
 .thumbnail-border {
-  border: 2px solid #ccc;            /* hellgrau */
-  border-radius: 4px;
-  transition: border-color 0.2s ease;
+    border: 2px solid #ccc;
+    /* hellgrau */
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
 }
 
 .thumbnail-border:hover {
-  border-color: #999;                /* dunkleres Grau bei Hover */
+    border-color: #999;
+    /* dunkleres Grau bei Hover */
 }
 
 
@@ -343,8 +339,7 @@ img.img-fluid {
 
 
 
-.custom-image {
-}
+.custom-image {}
 
 .custom-image:hover {
     /*transform: scale(1.01);*/
@@ -382,7 +377,27 @@ img.img-fluid {
 
 
 /* //////////////////MEDIA QUERRIES */
-@media (max-width: 900px) {
+
+/* //change to mobile menue */
+@media (max-width: 992px) {
+
+    /*change vert. distance to logo*/
+    #navbarContent {
+        margin-top: 1rem;
+    }
+
+    /*center h1 with menue*/
+    h1.title {
+        margin-bottom: 0;
+    }
+
+}
+
+
+
+/* //change to small header */
+@media (max-width: 768px) {
+
     .content-80 {
         width: 100%;
     }
@@ -396,43 +411,32 @@ img.img-fluid {
         scroll-margin-top: 100px;
     }
 
-}
-
-
-/* //change to mobile menue */
-@media (max-width: 991.98px) {
-      /*change vert. distance to logo*/
-  #navbarContent {
-    margin-top: 1rem;
-  }
-
-  /*center h1 with menue*/
-h1.title {
-    margin-bottom: 0;
-}
-}
-
-
-
-@media (max-width: 768px) {
     .main-wrapper {
         margin-top: 0;
     }
 
     .container.hip-header {
         /*PRIORITY!!!!!!!!!!!!!!*/
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
 
+    .container.bg-white {
+        /*ABSTAND ZU content to header*/
+        padding-top: 1rem;
     }
 
     body {
-
         margin-left: 0;
         margin-right: 0;
+    }
 
+    p {
+        margin-bottom: 2rem;
     }
 }
+
+
 
 /* //////////////////MOBILE MENUE TOGGLER */
 .navbar-toggler {
@@ -504,7 +508,7 @@ footer {
 .cookie-buttons button {
     padding: 0.2rem 1rem;
     border: none;
-     border-radius: 4px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -557,10 +561,10 @@ footer {
 }
 
 /*pfeile entfernen*/
-.glightbox-container .gprev,
+/*.glightbox-container .gprev,
 .glightbox-container .gnext {
     display: none !important;
-}
+}*/
 
 .glightbox-container img {
     pointer-events: none;
