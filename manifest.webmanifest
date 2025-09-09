@@ -1,0 +1,16 @@
+{
+  "name": "Recreating Movement",
+  "short_name": "RM Tool",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/img/Favicon_rm.png",
+      "sizes": "512x512 256x256 128x128 64x64 32x32 16x16",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

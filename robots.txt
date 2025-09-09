@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Crawl-delay can be set if your host struggles with load (GitHub Pages usually doesn't need it)
+# Crawl-delay: 2
+
+Sitemap: https://www.recreating-movement.com/sitemap.xml
